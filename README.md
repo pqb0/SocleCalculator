@@ -1,3 +1,4 @@
 # Calculation for $k$-th Socle Filtration using Sum of 4 partition Little Wood Coefficients.
 
-This is the code I have developed using formula for filtration.
+This is the code I have developed using formula for filtration. Based on work with professor penkov at 
+

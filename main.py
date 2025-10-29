@@ -1,13 +1,22 @@
-# ------------------------------------------------------------
-# 1.  Helper functions (the same ones you already have)
-# ------------------------------------------------------------
+from sage.all import *
+import sage.libs.lrcalc.lrcalc as lrcalc
+
 def degree(partition):
-    """Sum of the parts of a partition."""
+    """Return the degree (sum of parts) of a partition."""
     return sum(partition)
+
+def compare_by_degree(p1, p2):
+    """Compare two partitions by their degrees."""
+    d1, d2 = degree(p1), degree(p2)
+    if d1 < d2:
+        return -1
+    elif d1 > d2:
+        return 1
+    return 0
 
 
 def generate_partitions(n, max_part=None):
-    """Yield all integer partitions of n (order not important)."""
+    """Generate all partitions of n."""
     if n == 0:
         yield ()
     else:
@@ -17,20 +26,15 @@ def generate_partitions(n, max_part=None):
             for rest in generate_partitions(n - first, first):
                 yield (first,) + rest
 
-
 def subset_partitions(partition):
-    """All partitions whose total degree is ≤ |partition|."""
+    """Return all partitions with degree <= degree(partition)."""
     d = degree(partition)
     result = []
     for n in range(d + 1):
         result.extend(generate_partitions(n))
     return result
 
-
-# ------------------------------------------------------------
-# 2.  Solver that respects the *chosen* λ′ and μ′
-# ------------------------------------------------------------
-def solve_system(k, k1, k2, k3, k4):
+def solveOne(k, k1, k2, k3, k4):
     """
     Solve the system
 
@@ -118,10 +122,55 @@ def solve_system(k, k1, k2, k3, k4):
     return solutions
 
 
+def solveTwo(mu1, mu2, mu3, mu4):
 
-# ------------------------------------------------------------
-# 3.  Minimal interactive driver (the “Master” part)
-# ------------------------------------------------------------
+    v1 = mu1 + mu2
+    v2 = mu3 + mu4
+    
+
+    return [v1, v2]
+
+
+def lrcoef4(mu1, mu2, mu3, mu4, lam):
+    """
+    Compute
+
+        Σ_{a,b}  c^{a}_{mu1,mu2} · c^{b}_{mu3,mu4} · c^{lam}_{a,b}
+
+    where the sum runs over all partitions
+
+        a ⊢ (mu1+mu2)   and   b ⊢ (mu3+mu4).
+
+    The three LR‑coefficients are provided by Sage's ``lrcalc.lrcoef``.
+    If any triple is not admissible the coefficient is zero, so we may
+    simply multiply the three numbers.
+    """
+    # total degrees for the two “intermediate” partitions
+    total1 = mu1 + mu2
+    total2 = mu3 + mu4
+
+    # generate *all* partitions of those degrees
+    parts_a = list(generate_partitions(total1))
+    parts_b = list(generate_partitions(total2))
+
+    s = 0
+    for a in parts_a:
+        ca = int(lrcalc.lrcoef((mu1,), (mu2,), a))   # c^{a}_{mu1,mu2}
+        if ca == 0:
+            continue
+        for b in parts_b:
+            cb = int(lrcalc.lrcoef((mu3,), (mu4,), b))   # c^{b}_{mu3,mu4}
+            if cb == 0:
+                continue
+            cab = int(lrcalc.lrcoef(a, b, (lam,)))       # c^{lam}_{a,b}
+            if cab == 0:
+                continue
+            s += ca * cb * cab
+    
+    print(f's values:{s}')
+    return s
+    
+
 def Master():
     # ----  INPUT λ and μ  ----------------------------------------
     lam = tuple(map(int, input("Enter λ (space‑separated parts): ").split()))
@@ -159,19 +208,10 @@ def Master():
     k = int(input("\nEnter fixed constant k: "))
 
     # ----  solve -------------------------------------------------
-    sols = solve_system(k, k1, k3, k2, k4)
+    sols = CalcSoc(k, k1, k2, k3, k4)
+    print(sols)
+
 
     print(f"\nGiven k = {k}, |λ| = {k1}, |μ| = {k3}, "
           f"deg λ' = {k2}, deg μ' = {k4}, solutions are:")
-    if not sols:
-        print("❗  No solutions found – check the feasibility conditions.")
-    else:
-        for s in sols:
-            print(s)
-
-
-# ------------------------------------------------------------
-# 4.  Run the demo
-# ------------------------------------------------------------
-if __name__ == "__main__":
-    Master()
+Master()

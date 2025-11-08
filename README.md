@@ -45,5 +45,5 @@ $$\mathcal{L}_1 := \lbrace \ \vec{x} = (\gamma, \delta, p, q) , \quad A\vec{x} =
 
 
 
-
+_Explanation to be completed..._
 

@@ -96,6 +96,8 @@ def lrcoefP(mu, nu, lam):
     num_boxes = sum(skew)
     if num_boxes != sum(nu):
         return 0
+        
+    # Corner case for littlewood
     if mu == () and degree(nu) == degree(lam) and nu != lam:
         return 0
     if nu == () and degree(mu) == degree(lam) and mu != lam:
@@ -241,10 +243,10 @@ def CalcSoc(k, lam, lamP, mu, muP):
         for d in d_list:
             for g in g_list:
 
-                # first factor uses the *full* partition lam
+                # lam
                 term1 = lrcoef4(lamP, g, d, p, lam)
 
-                # second factor uses the *full* partition mu
+                # mu 
                 term2 = lrcoef4(muP, g, d, q, mu)
 
                 tot_sum += term1 * term2

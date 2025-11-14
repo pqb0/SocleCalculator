@@ -96,7 +96,10 @@ def lrcoefP(mu, nu, lam):
     num_boxes = sum(skew)
     if num_boxes != sum(nu):
         return 0
-
+    if mu == () and degree(nu) == degree(lam) and nu != lam:
+        return 0
+    if nu == () and degree(mu) == degree(lam) and mu != lam:
+        return 0
     # naive enumeration for small cases
     entries = weight_to_list(nu)
     c = 0
@@ -106,7 +109,6 @@ def lrcoefP(mu, nu, lam):
     return c
 
 # ------------------ Solving System for Degrees of Partitions Lambda, Delta, and Values of P and Q -----------------
-
 def solveOne(k, k1, k2, k3, k4):
 
     if k2 > k1 or k4 > k3:
@@ -121,6 +123,8 @@ def solveOne(k, k1, k2, k3, k4):
         
         for x2 in range(range_Max):
 
+
+
             if range_Max == 0:
 
                 sol1 = {
@@ -132,7 +136,6 @@ def solveOne(k, k1, k2, k3, k4):
                 "deg μ'": k4
                 
                 }
-
                 solutions.append(sol1)
 
             x3 = k1 - k2 - (x1 + x2)
@@ -153,7 +156,6 @@ def solveOne(k, k1, k2, k3, k4):
                 "deg λ'": k2,
                 "deg μ'": k4
                 }
-
             solutions.append(sol)
 
     return solutions
@@ -162,6 +164,7 @@ def solveOne(k, k1, k2, k3, k4):
 # --------------------- Littlewood Richardon Coefficient (Order 4) ---------------------------
 
 def lrcoef4(mu1, mu2, mu3, mu4, lam):
+
     d_mu1 = degree(mu1)
     d_mu2 = degree(mu2)
     d_mu3 = degree(mu3)
@@ -177,30 +180,41 @@ def lrcoef4(mu1, mu2, mu3, mu4, lam):
 
     s = 0
     i = 1
-    for a in parts_v1:
-   
-        i += 1
-        N1 = int(lrcoefP(mu1, mu2, a))   # N^{v1}_{mu1,mu2}
+    for a in parts_a:
 
-        if N1 == 0:
-            continue
-        for b in parts_v2:
-            N2 = int(lrcoefP(mu3, mu4, b))   # N^{v2}_{mu3,mu4}
+        i += 1
+
+
+        
+        for b in parts_b:
+            N1 = int(lrcoefP(mu1, mu2, a))   # c^{a}_{mu1,mu2}
+            
+            if N1 == 0: 
+                continue
+    
+            N2 = int(lrcoefP(mu3, mu4, b))   # c^{b}_{mu3,mu4}
 
             if N2 == 0:
                 continue
-            N3 = int(lrcoefP(a, b, lam))           # N^{lam}_{v1,v2}
+            N3 = int(lrcoefP(a, b, lam))           # c^{lam}_{a,b}
 
             if N3 == 0:
+
                 continue
+                
             s_term = N1 * N2 * N3
+
             s += s_term
-        
+
+
     return s
 
 # ------------------------------------- SOCLE METHOD -----------------------------------------
 
 def CalcSoc(k, lam, lamP, mu, muP):
+    """
+    k1 = |lam|,   k3 = |mu|
+    """
 
     k1 = degree(lam)
     k2 = degree(lamP)
@@ -212,42 +226,44 @@ def CalcSoc(k, lam, lamP, mu, muP):
         return 1
 
     L = solveOne(k, k1, k2, k3, k4)
-
+    
     tot_sum = 0
 
     for sol in L:
+
         d_list = list(generate_partitions(sol["deg δ"]))
         g_list = list(generate_partitions(sol["deg γ"]))
+
         
         p = ones_partition(sol["p"])
         q = ones_partition(sol["q"])
 
         for d in d_list:
-
             for g in g_list:
 
-
                 # first factor uses the *full* partition lam
-                term1 = lrcoef4(lamP, d, g, p, lam)
+                term1 = lrcoef4(lamP, g, d, p, lam)
+
                 # second factor uses the *full* partition mu
-                term2 = lrcoef4(muP, d, g, q, mu)
+                term2 = lrcoef4(muP, g, d, q, mu)
 
                 tot_sum += term1 * term2
 
     return tot_sum
 
+
 # -------------------------- Master Method ------------------------
 
-def Master2(k, lam, lamP, mu, muP, ex_string = ''):
+def Master(k, lam, lamP, mu, muP, ex_string = ''):
     print(f'''|----------- Calculation for {k+1}-th socle filtration given partitions: ----------| \n 
             lambda = {lam} \n
             lambda Prime = {lamP} \n
             mu = {mu} \n 
             mu Prime = {muP} \n
             k-value = {k} \n''')
-    print(solveOne(k, degree(lam), degree(lamP), degree(mu), degree(muP)))
-    print(f'\n <<<<<<<<<<<<< {k + 1}-th Socle Filtration is : {CalcSoc(k, lam, lamP, mu, muP)} >>>>>>>>>>>>>\n\n')
-    print("--------------------Done!-------------------- !!\n")
+    # print(solveOne(k, degree(lam), degree(lamP), degree(mu), degree(muP)))
+    print(f'\n <<<<<<<<<<<<< {k + 1}-th Socle Filtration is : {CalcSoc(k, lam, lamP, mu, muP)} >>>>>>>>>>>>>\n')
+    print("--------------------Done!-------------------- !!")
 
-
-Master2(8, (2,5), (), (3,), (1,1))
+# Soc4 for Lam = (1, 1) Mu = (1,1)
+Master(4, (1,1), (), (1,1), ())

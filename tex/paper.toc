@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Mathematical background}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Partitions and degree}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Skew shapes}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Littlewood--Richardson coefficients}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Yamanouchi (lattice) words}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Algorithmic components}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Generating and filtering partitions}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}2-order Littlewood--Richardson coefficient (\texttt {lrcoefP})}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}4-order Littlewood--Richardson coefficient (\texttt {lrcoef4})}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Solving the degree balance system (\texttt {solveOne})}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Socle filtration formula (\texttt {CalcSoc})}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Driver routine (\texttt {Master})}{6}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Complexity considerations and practical tips}{6}{section.3}%

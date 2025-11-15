@@ -268,4 +268,13 @@ def Master(k, lam, lamP, mu, muP, ex_string = ''):
     print("--------------------Done!-------------------- !!")
 
 # Soc4 for Lam = (1, 1) Mu = (1,1)
-Master(4, (1,1), (), (1,1), ())
+# Master(4, (1,1), (), (1,1), ())
+
+k = 8
+lam = (3, 3)
+lamP = (1, 1)
+mu = (2, 3)
+muP = (1,)
+
+Master(k, lam, lamP, mu, muP)
+

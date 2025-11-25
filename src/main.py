@@ -275,6 +275,6 @@ lam = (3, 3)
 lamP = (1, 1)
 mu = (2, 3)
 muP = (1,)
-
-Master(k, lam, lamP, mu, muP)
+#
+# Master(k, lam, lamP, mu, muP)
 

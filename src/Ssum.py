@@ -189,23 +189,19 @@ def lrcoef4(mu1, mu2, mu3, mu4, lam):
 
         
         for b in parts_b:
-            N1 = int(lrcoefP(mu1, mu2, a))   # c^{a}_{mu1,mu2}
+            N1 = int(lrcoefP(mu1, mu2, a))   # N^{a}_{mu1,mu2}
             
             if N1 == 0: 
                 continue
     
-            N2 = int(lrcoefP(mu3, mu4, b))   # c^{b}_{mu3,mu4}
+            N2 = int(lrcoefP(mu3, mu4, b))   # N^{b}_{mu3,mu4}
 
             if N2 == 0:
                 continue
-            N3 = int(lrcoefP(a, b, lam))           # c^{lam}_{a,b}
-
+            N3 = int(lrcoefP(a, b, lam))           # N^{lam}_{a,b}
             if N3 == 0:
-
-                continue
-                
+                continue   
             s_term = N1 * N2 * N3
-
             s += s_term
 
 

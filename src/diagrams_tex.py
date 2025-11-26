@@ -1,33 +1,33 @@
-import main
-
+import Ssum
+import re
 
 
 
 def DirectSumMethod(k, lam, mu):
-    muP_list = main.subset_partitions(mu)
-    lamP_list = main.subset_partitions(lam)
+    muP_list = Ssum.subset_partitions(mu)
+    lamP_list = Ssum.subset_partitions(lam)
 
     string_sol = ""
 
     for lamP in lamP_list:
         for muP in muP_list:
-            S = main.CalcSoc(k, lam, lamP, mu, muP)
+            S = Ssum.CalcSoc(k, lam, lamP, mu, muP)
+            # print(f'lP = {lamP}, mP = {muP}, k = {k}      S = {S}')
 
-            if S == 0:
-                continue
+            #print(f'S is {S}')
+            if S != 0:
+                # print("!!\n")
+                lamP_str = r"\varnothing" if lamP == () else str(lamP)
+                muP_str  = r"\varnothing" if muP == () else str(muP)
 
+                exponent = f"{{{lamP_str}, {muP_str}}}"
 
-            lamP_str = r"\varnothing" if lamP == () else str(lamP)
-            muP_str  = r"\varnothing" if muP == () else str(muP)
-
-            exponent = f"{{{lamP_str}, {muP_str}}}"
-
-            if S == 1:
-                term = f"V^{exponent} \\oplus "
-            else:
-                term = f"{S} V^{exponent} \\oplus "
-            
-            string_sol += term
+                if S == 1:
+                    term = f"V^{exponent} \\oplus "
+                else:
+                    term = f"{S} V^{exponent} \\oplus "
+                
+                string_sol += term
 
     string_sol = string_sol.removesuffix("\\oplus ")
     return string_sol
@@ -36,14 +36,14 @@ def DirectSumMethod(k, lam, mu):
 # print(DirectSumMethod(2, (1,1), (1,)))
 
 def MakeTable(k, lam, mu):
-    print(f"Table for $\\lambda = {lam}$, $\\mu = {mu}$:\n")
+    print(f"Table for $\\lambda = {lam}$, $\\mu = {mu}, k = {k}$:\n")
 
     print("\\begin{table}[h]")
     print("\\centering")
     print("\\begin{tabular}{|c|}")
     print("\\hline")
 
-    for i in range(1, k):
+    for i in range(k):
         row = DirectSumMethod(i, lam, mu)
         #if row == "":
             #row = r"$0$"        # optional: ensure the table cell isn't empty
@@ -53,24 +53,29 @@ def MakeTable(k, lam, mu):
     print("\\end{tabular}")
     print("\\end{table}")
 
-# Table Example
-# MakeTable(2, (1,1), (1,))
 
-def MakeTable(k, lam, mu, filename="table.tex"):
+
+def MakeTable_tex(k, lam, mu, filename="table.tex"):
     # Build the LaTeX content
     tex = []
-    tex.append(f"% Automatically generated table\n")
-    tex.append(f"Table for $\\lambda = {lam}$, $\\mu = {mu}$:\n")
-    tex.append("\\begin{table}[h]\n")
+    tex.append(f"\\renewcommand{{\\arraystretch}}{{1.6}} \n")
+    tex.append("\\begin{table}[H]\n")
     tex.append("\\centering\n")
-    tex.append("\\begin{tabular}{|c|}\n")
+    tex.append(f"\\caption{{Table for $\\lambda = {lam}$, $\\mu = {mu}$, $k = {k}$}}\n")
+    tex.append("\\begin{tabular}{|>{\\centering\\arraybackslash}p{15cm}|}\n")
     tex.append("\\hline\n")
 
     for i in range(k):
         row = DirectSumMethod(i, lam, mu)
-        if row == "":
-            row = r"$0$"
-        tex.append(f"{row} \\\\ \\hline\n")
+
+        # --------------------------------------
+        # Filter partitions of the form (k,) → (k)
+        # --------------------------------------
+        # Convert patterns like "(3,)" → "(3)"
+        row = re.sub(r"\((\d+),\)", r"(\1)", row)
+
+        tex.append(f" $k = {i}: \quad {row}$ \\\\ \\hline\n")
+
 
     tex.append("\\end{tabular}\n")
     tex.append("\\end{table}\n")
@@ -79,11 +84,17 @@ def MakeTable(k, lam, mu, filename="table.tex"):
     tex_string = "".join(tex)
 
     # Write to file
-    with open(filename, "w") as f:
+    with open(filename, "a") as f:
         f.write(tex_string)
+        f.write("\n%---------------------\n")
 
     print(f"LaTeX table written to {filename}")
     return tex_string
 
 
 
+
+if __name__ == '__main__':
+
+    MakeTable_tex(4, (1,1), (2,), "./tex_tables/t1.tex")
+    MakeTable_tex(4, (1,1), (1,), "./tex_tables/t1.tex")

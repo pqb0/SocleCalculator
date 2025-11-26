@@ -47,3 +47,11 @@ $$\mathcal{L}_1 := \lbrace \ \vec{x} = (\gamma, \delta, p, q) , \quad A\vec{x} =
 
 _Explanation to be completed..._
 
+### Examples of the tables:
+
+ $$k = 0: \quad V^{(3), (4)} $$ 
+ $$k = 1: \quad V^{(2), (3)} \oplus V^{(2), (4)} \oplus V^{(3), (3)} $$ 
+ $$k = 2: \quad 2 V^{(1), (2)} \oplus 2 V^{(1), (3)} \oplus V^{(1), (4)} \oplus 2 V^{(2), (2)} \oplus 2 V^{(2), (3)} \oplus V^{(3), (2)} $$
+ $$k = 3: \quad V^{\varnothing, (1)} \oplus V^{\varnothing, (2)} \oplus V^{\varnothing, (3)} \oplus 6 V^{(1), (1)} \oplus 5 V^{(1), (2)} \oplus 2 V^{(1), (3)} \oplus 4 V^{(2), (1)} \oplus 2 V^{(2), (2)} \oplus V^{(3), (1)} $$
+ $$k = 4: \quad V^{\varnothing, \varnothing} \oplus 5 V^{\varnothing, (1)} \oplus 4 V^{\varnothing, (2)} \oplus V^{\varnothing, (3)} \oplus V^{(1), \varnothing} \oplus 10 V^{(1), (1)} \oplus 4 V^{(1), (2)} \oplus V^{(2), \varnothing} \oplus 2 V^{(2), (1)} $$ 
+ $$k = 5: \quad 7 V^{\varnothing, \varnothing} \oplus 9 V^{\varnothing, (1)} \oplus 2 V^{\varnothing, (2)} \oplus 6 V^{(1), \varnothing} \oplus 4 V^{(1), (1)} \oplus V^{(2), \varnothing} $$ 

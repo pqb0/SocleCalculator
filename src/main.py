@@ -5,7 +5,7 @@ import Ssum
 filename = "./tex_tables/t2.tex"
 
 
-def generateTables(n, m, k, file=filename):
+def generateTables(n, m, file=filename):
     lam_list = list(Ssum.generate_partitions(n))
     mu_list = list(Ssum.generate_partitions(m))
 
@@ -14,11 +14,12 @@ def generateTables(n, m, k, file=filename):
     
     for lam in lam_list:
         for mu in mu_list:
-            diag.MakeTable_tex(k, lam, mu, file)
+            diag.MakeTable_tex(lam, mu, file)
         
 
 
 if __name__ == '__main__':
-    generateTables(3, 4, 6, filename)
+    n = 7
+    generateTables(n, n, filename)
 
 

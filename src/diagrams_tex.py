@@ -43,11 +43,15 @@ def MakeTable(k, lam, mu):
     print("\\begin{tabular}{|c|}")
     print("\\hline")
 
-    for i in range(k):
-        row = DirectSumMethod(i, lam, mu)
+    for i in range(2*k):
+        row = DirectSumMethod(k-i, lam, mu)
+
+        if row == f"":
+            continue
         #if row == "":
             #row = r"$0$"        # optional: ensure the table cell isn't empty
         print(f"${row}$ \\\\ \\hline")
+        
 
     print(f' $V^{{{lam}, {mu}}}$\\\\ \\hline')
     print("\\end{tabular}")
@@ -55,32 +59,34 @@ def MakeTable(k, lam, mu):
 
 
 
-def MakeTable_tex(k, lam, mu, filename="table.tex"):
+def MakeTable_tex(lam, mu, filename="table.tex"):
     # Build the LaTeX content
     tex = []
+    tex1 = []
     tex.append(f"\\renewcommand{{\\arraystretch}}{{1.6}} \n")
     tex.append("\\begin{table}[H]\n")
     tex.append("\\centering\n")
-    tex.append(f"\\caption{{Table for $\\lambda = {lam}$, $\\mu = {mu}$, $k = {k}$}}\n")
+    tex.append(f"\\caption{{Table for $\\lambda = {lam}$, $\\mu = {mu}$:}}\n")
     tex.append("\\begin{tabular}{|>{\\centering\\arraybackslash}p{15cm}|}\n")
     tex.append("\\hline\n")
 
-    for i in range(k):
-        row = DirectSumMethod(i, lam, mu)
 
-        # --------------------------------------
-        # Filter partitions of the form (k,) → (k)
-        # --------------------------------------
-        # Convert patterns like "(3,)" → "(3)"
+    k = 0
+    while True:
+        row = DirectSumMethod(k, lam, mu)
+        if row == f"":
+            break
         row = re.sub(r"\((\d+),\)", r"(\1)", row)
-
-        tex.append(f" $k = {i}: \quad {row}$ \\\\ \\hline\n")
-
-
+        tex1.append(f" $k = {k}: \quad {row}$ \\\\ \\hline\n")
+        k += 1
+    
+    tex1.reverse()
+    tex += tex1
     tex.append("\\end{tabular}\n")
     tex.append("\\end{table}\n")
 
     # Join into a single string
+
     tex_string = "".join(tex)
 
     # Write to file
@@ -96,5 +102,5 @@ def MakeTable_tex(k, lam, mu, filename="table.tex"):
 
 if __name__ == '__main__':
 
-    MakeTable_tex(4, (1,1), (2,), "./tex_tables/t1.tex")
-    MakeTable_tex(4, (1,1), (1,), "./tex_tables/t1.tex")
+    MakeTable_tex((1,1), (2,), "./tex_tables/t1.tex")
+    MakeTable_tex((1,1), (1,), "./tex_tables/t1.tex")

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1764689048.06626 "/Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_sample/deg4/deg4.tex" "deg4.pdf" "deg4" 1764689048.74105 0
-  "/Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_sample/deg4/deg4.tex" 1764688768.65451 64500 654014cdfb667764325c3fe112ec5c7d ""
+["pdflatex"] 1764778815.24804 "/Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_sample/deg_nequal/deg3_nempty/deg3_empty.tex" "deg3_empty.pdf" "deg3_empty" 1764778815.91793 0
+  "/Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_sample/deg_nequal/deg3_nempty/deg3_empty.tex" 1764778814.34528 5111 b2eaab663dfba31aff0c060e93d75597 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm" 1246382020 1120 200be8b775682cdf80acad4be5ef57e4 ""
@@ -175,12 +175,12 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1726585542.40791 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1726585511 8221422 77f82fd764bacdfa39fecd7df5c6a93b ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "deg4.aux" 1764689048.68689 4327 6e3617b308890215e9007a6d8c3df172 "pdflatex"
-  "deg4.out" 1764689048.50971 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "deg4.tex" 1764688768.65451 64500 654014cdfb667764325c3fe112ec5c7d ""
+  "deg3_empty.aux" 1764778815.86408 969 dcf7fdc937869165300d9b1826123968 "pdflatex"
+  "deg3_empty.out" 1764778815.72739 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "deg3_empty.tex" 1764778814.34528 5111 b2eaab663dfba31aff0c060e93d75597 ""
   (generated)
-  "deg4.aux"
-  "deg4.log"
-  "deg4.out"
-  "deg4.pdf"
+  "deg3_empty.aux"
+  "deg3_empty.log"
+  "deg3_empty.out"
+  "deg3_empty.pdf"
   (rewritten before read)

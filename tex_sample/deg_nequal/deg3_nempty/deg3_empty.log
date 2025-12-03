@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.17)  2 DEC 2025 16:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.17)  3 DEC 2025 17:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_sample/deg4/deg4.tex
-(/Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_sample/deg4/deg4.tex
+**/Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_sample/deg_nequal/deg3_nempty/deg3_empty.tex
+(/Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_sample/deg_nequal/deg3_nempty/deg3_empty.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -593,8 +593,8 @@ File: lstlang1.sty 2024/02/21 1.10 listings language file
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count333
 \l__pdf_internal_box=\box71
-) (./deg4.aux)
-\openout1 = `deg4.aux'.
+) (./deg3_empty.aux)
+\openout1 = `deg3_empty.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
@@ -670,42 +670,42 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring OFF on input line 41.
- (./deg4.out) (./deg4.out)
+ (./deg3_empty.out) (./deg3_empty.out)
 \@outlinefile=\write4
-\openout4 = `deg4.out'.
+\openout4 = `deg3_empty.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] (./deg4.aux)
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./deg3_empty.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `deg4.out' has not changed.
+Package rerunfilecheck Info: File `deg3_empty.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26611 strings out of 474116
- 504340 string characters out of 5743682
- 1954187 words of memory out of 5000000
+ 26576 strings out of 474116
+ 504094 string characters out of 5743682
+ 1945187 words of memory out of 5000000
  48526 multiletter control sequences out of 15000+600000
  565483 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,12n,97p,815b,442s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,97p,506b,442s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on deg4.pdf (17 pages, 86365 bytes).
+Output written on deg3_empty.pdf (2 pages, 52247 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
+ 57 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
+ 8 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

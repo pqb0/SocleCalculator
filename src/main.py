@@ -19,7 +19,6 @@ def generateTables(n, m, file=filename):
 
 
 if __name__ == '__main__':
-    n = 7
-    generateTables(n, n, filename)
+    generateTables(4, 1, filename)
 
 

@@ -1,0 +1,6 @@
+PWD /Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_tables
+INPUT /usr/local/texlive/2024/texmf.cnf
+INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /Users/pabo/Desktop/IP_Contents/SocleProject/SocleCalculator/tex_tables/t1.tex
+OUTPUT t1.log

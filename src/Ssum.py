@@ -1,7 +1,7 @@
 import math
 from itertools import permutations
 
-
+print(lrcoeff((3,), (2,) (1,)))
 # --- Partition Methods ---
 
 def degree(partition):
@@ -111,6 +111,7 @@ def lrcoefP(mu, nu, lam):
     return c
 
 # ------------------ Solving System for Degrees of Partitions Lambda, Delta, and Values of P and Q -----------------
+
 def solveOne(k, k1, k2, k3, k4):
 
     if k2 > k1 or k4 > k3:
@@ -262,12 +263,13 @@ def Master(k, lam, lamP, mu, muP, ex_string = ''):
 # Master(4, (1,1), (), (1,1), ())
 
 if __name__ == '__main__':
-    k = 1
-    lam = (1, 1)
-    mu = (1,)
+    k = 2
+    lam = (4,)
+    mu = ()
 
-    lamP = (2,)
+    lamP = (3,)
     muP = ()
-    #
+    
+
     Master(k, lam, lamP, mu, muP)
 

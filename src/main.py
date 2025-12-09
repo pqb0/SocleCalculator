@@ -2,6 +2,7 @@ import diagrams_tex as diag
 import Ssum
 
 
+
 filename = "./tex_tables/t2.tex"
 
 
@@ -19,6 +20,6 @@ def generateTables(n, m, file=filename):
 
 
 if __name__ == '__main__':
-    generateTables(4, 1, filename)
+    generateTables(4, 0, filename)
 
 

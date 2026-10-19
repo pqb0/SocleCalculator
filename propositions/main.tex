@@ -1,0 +1,97 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{authblk}
+\usepackage{tabularx}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{examples}[theorem]{Examples}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+
+
+\crefname{theorem}{theorem}{theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+
+\title{Deg4 partitions}
+\author{Pablo Santos}
+\date{\today}
+
+\begin{document}
+
+\begin{proposition} let $\lambda = (\lambda_1, ..., \lambda_r)$ and $\mu = (\mu_1, ..., \mu_i)$
+    \begin{enumerate}
+
+        \item[(1)] $\exists k \in \mathbb{N}$ such that  $\: \overline{\operatorname{soc}}^n I^{\lambda, \mu} = 0$ for all $n >k$.
+        \item[(2)] also $k_{max} := \operatorname{max}_{\gamma_1,\gamma_2} |\gamma_1| + |\gamma_2|$ is given by: $ k_{max} = \operatorname{min}\{|\lambda|, |\mu|\}$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+
+    Assume without loss of generality that $|\mu| < |\lambda|$, For sake of contradiction when proving (1), assume that there exists some $n\in\mathbb{N}$ such that $n>k_{max}$ with $\: \overline{\operatorname{soc}}^n I^{\lambda, \mu} \neq 0$
+
+    this implies that
+
+    $$ 
+    \bigoplus_{\lambda',\mu'} \bigoplus_{|\lambda|+|\mu|=n} N^\lambda \cdot N^\mu \neq 0
+    $$
+
+    $$
+    \iff \exists \gamma_1, \gamma_2: |\lambda|+|\mu|=n \:\: s.t. \quad N^\lambda_{\gamma_1, \gamma_2, \lambda'} \cdot N^\lambda_{\gamma_1, \gamma_2, \mu'} \neq = 0
+    $$
+
+    $$
+    \iff  N^\lambda_{\gamma_1, \gamma_2, \lambda'} \neq 0 \textnormal{ and }  N^\lambda_{\gamma_1, \gamma_2, \mu'} \neq 0
+    $$
+    
+    Well:
+
+    $$ \operatorname{max}_{\gamma_1,\gamma_2} |\gamma_1| + |\gamma_2| := k_{max} < n =  |\gamma_1| + |\gamma_2| $$
+
+    $$ \iff \operatorname{max}_{\gamma_1,\gamma_2} |\gamma_1| + |\gamma_2| <  |\gamma_1| + |\gamma_2| $$
+
+    which contradicts by deficinition of max.
+
+    For (2):
+
+    Look at any $k\neq0$, that is $\exists \gamma_1, \gamma_2: |\gamma_1|+|\gamma_2| = k \leq k_{max}$.
+
+    $$
+     k = |\gamma_1|+|\gamma_2| \leq |\mu| = \operatorname{min} \{|\lambda|,|\mu|\}
+    $$
+
+    $$
+    \implies k \leq  \operatorname{min} \{|\lambda|,|\mu|\}
+    $$
+
+    Furtherermore given that $|\gamma_1|+|\gamma_2| = |\lambda|-|\lambda'|$ and $|\gamma_1|+|\gamma_2| = |\mu|-|\mu'|$. The fact that (1) guarantees existance of maximum means that this is precisely when $k = |\lambda|-|\lambda'| = |\mu|-|\mu'|$ is maximal. This is when $\mu' = \emptyset$ and $|\lambda|-|\lambda'| = |\mu|$.
+    
+    $\implies |\gamma_1|+|\gamma_2| \leq k_{max} = |\mu| = \operatorname{min} \{|\lambda|,|\mu|\}$
+
+    $$ \implies k_{max}  = \operatorname{min} \{|\lambda|,|\mu|\}$$ 
+\end{proof}
+
+
+
+\end{document}
+

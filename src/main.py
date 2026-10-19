@@ -20,6 +20,6 @@ def generateTables(n, m, file=filename):
 
 
 if __name__ == '__main__':
-    generateTables(4, 0, filename)
+    generateTables(4, 2, filename)
 
 

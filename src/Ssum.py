@@ -1,7 +1,7 @@
 import math
 from itertools import permutations
 
-print(lrcoeff((3,), (2,) (1,)))
+
 # --- Partition Methods ---
 
 def degree(partition):

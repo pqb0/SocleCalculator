@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1792248633.48214 "/Users/pabo/Desktop/IP_Contents/08 SocleProject/SocleCalculator/hoyt_tables/t1.tex" "t1.pdf" "t1" 1792248634.03878 0
-  "/Users/pabo/Desktop/IP_Contents/08 SocleProject/SocleCalculator/hoyt_tables/t1.tex" 1792248633.24524 6576 8e6563e3da564bbca3d8b30129dbfb3e ""
+["pdflatex"] 1792772243.01675 "/Users/pabo/Desktop/IP_Contents/08 SocleProject/SocleCalculator/hoyt_tables/t1.tex" "t1.pdf" "t1" 1792772243.53781 0
+  "/Users/pabo/Desktop/IP_Contents/08 SocleProject/SocleCalculator/hoyt_tables/t1.tex" 1792772242.28853 7538 cb2e128e3d5140e92c1f0331d272474b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm" 1246382020 1120 200be8b775682cdf80acad4be5ef57e4 ""
@@ -109,9 +109,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1726585542.40791 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1726585511 8221422 77f82fd764bacdfa39fecd7df5c6a93b ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "t1.aux" 1792248633.99621 336 a58c45676c79d779ec748cabd92f499b "pdflatex"
-  "t1.out" 1792248633.86217 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "t1.tex" 1792248633.24524 6576 8e6563e3da564bbca3d8b30129dbfb3e ""
+  "t1.aux" 1792772243.49603 336 a58c45676c79d779ec748cabd92f499b "pdflatex"
+  "t1.out" 1792772243.36696 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "t1.tex" 1792772242.28853 7538 cb2e128e3d5140e92c1f0331d272474b ""
   (generated)
   "t1.aux"
   "t1.log"

@@ -1342,21 +1342,3 @@ Useful starting points include:
 5. A. Knutson, T. Tao, and C. Woodward, *A Positive Proof of the Littlewood–Richardson Rule Using the Octahedron Recurrence*.
 
 The formal manuscript in `lr_paper/` develops the principal statements and their proofs in more detail.
-
----
-
-### 19. Summary
-
-This investigation began as a computational problem: evaluate generalized Littlewood–Richardson multiplicities and generate the associated layer decompositions efficiently.
-
-The optimized Hoyt implementation made it practical to study much larger families of partition pairs, inspect their highest nonzero layers, and identify the LR factorizations responsible for individual summands.
-
-The mathematical investigation then developed beyond direct computation.
-
-We obtained exact formulas in the one-row and two-row cases, general structural inequalities, stability and superadditivity properties, a character-theoretic recursion, and a finite-generation framework with asymptotic consequences.
-
-The current emphasis is no longer exclusively on determining the maximum nonzero layer. It is on understanding the structure of common Littlewood–Richardson supports, the multiplicities within the highest layer, and the algebraic and polyhedral properties governing their behavior.
-
-These questions provide several independent directions for further research and connect the computational experiments to broader problems in algebraic combinatorics and representation theory.
-
----

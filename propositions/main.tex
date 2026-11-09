@@ -23,6 +23,7 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{examples}[theorem]{Examples}
+\newtheorem{lemma}[theorem]{Lemma}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
@@ -38,60 +39,187 @@
 
 \begin{document}
 
-\begin{proposition} let $\lambda = (\lambda_1, ..., \lambda_r)$ and $\mu = (\mu_1, ..., \mu_i)$
-    \begin{enumerate}
+\maketitle
 
-        \item[(1)] $\exists k \in \mathbb{N}$ such that  $\: \overline{\operatorname{soc}}^n I^{\lambda, \mu} = 0$ for all $n >k$.
-        \item[(2)] also $k_{max} := \operatorname{max}_{\gamma_1,\gamma_2} |\gamma_1| + |\gamma_2|$ is given by: $ k_{max} = \operatorname{min}\{|\lambda|, |\mu|\}$
-    \end{enumerate}
+\begin{lemma} \label{lem_best_int}
+    Given a partition $\mu$, a strict $\beta$-expansion of $\gamma$, Then the greatest such $\gamma$ is when $\gamma$ is $\mu$ and  $\beta = \varnothing$
+\end{lemma}
+
+\begin{proof}
+    Feels obvious, but strict expansion means that $N^{\mu}_{\gamma, \beta} \neq 0$. But  $N^{\mu}_{\mu, \beta} \neq 0 \iff \beta = \varnothing $. The degree of $\mu$ should equal the sum of both. That is $ |\mu| = |\gamma| + |\beta|$
+    Then $\gamma$ is at most $|\mu|$ and $|\beta| = 0 \implies \beta = \varnothing$,
+\end{proof}
+
+\begin{proposition} If $\mu \subseteq \lambda$ is a subpartition  of $\lambda$ (contained as a diagram), then the last non zero socle layer is at:
+
+    $$
+        \mathcal{K} = |\lambda \cap \mu| + |\gamma_2|
+    $$
+and $\gamma_2$ is a maximal sub diagram of $\lambda$ and $\mu$, and $\lambda$ is a strict $\gamma_2$-expansion of $\lambda \cap \mu$
 \end{proposition}
 
 \begin{proof}
 
-    Assume without loss of generality that $|\mu| < |\lambda|$, For sake of contradiction when proving (1), assume that there exists some $n\in\mathbb{N}$ such that $n>k_{max}$ with $\: \overline{\operatorname{soc}}^n I^{\lambda, \mu} \neq 0$
-
-    this implies that
-
-    $$ 
-    \bigoplus_{\lambda',\mu'} \bigoplus_{|\lambda|+|\mu|=n} N^\lambda \cdot N^\mu \neq 0
-    $$
-
-    $$
-    \iff \exists \gamma_1, \gamma_2: |\lambda|+|\mu|=n \:\: s.t. \quad N^\lambda_{\gamma_1, \gamma_2, \lambda'} \cdot N^\lambda_{\gamma_1, \gamma_2, \mu'} \neq = 0
-    $$
-
-    $$
-    \iff  N^\lambda_{\gamma_1, \gamma_2, \lambda'} \neq 0 \textnormal{ and }  N^\lambda_{\gamma_1, \gamma_2, \mu'} \neq 0
-    $$
+    We search for the maximum k. We already know that for $\lambda$ and $\mu$, $K_{max} \leq \operatorname{min}\{\lambda, \mu\} = | \mu| = |\lambda \cap \mu|$ Then of course 
     
-    Well:
+    $$K_{max} \leq |\lambda \cap \mu| \leq |\lambda \cap \mu| + |\gamma_2|$$
 
-    $$ \operatorname{max}_{\gamma_1,\gamma_2} |\gamma_1| + |\gamma_2| := k_{max} < n =  |\gamma_1| + |\gamma_2| $$
+    $$K_{max} \leq |\lambda \cap \mu| + |\gamma_2|$$
+    For any $\gamma_2$ Partition. So  true for a $\gamma_2$ like the one mentioned above.
 
-    $$ \iff \operatorname{max}_{\gamma_1,\gamma_2} |\gamma_1| + |\gamma_2| <  |\gamma_1| + |\gamma_2| $$
-
-    which contradicts by deficinition of max.
-
-    For (2):
-
-    Look at any $k\neq0$, that is $\exists \gamma_1, \gamma_2: |\gamma_1|+|\gamma_2| = k \leq k_{max}$.
+    For the other direction, recall that for any $k = |\gamma_1| + |\gamma_2|$ non-zero, there exists partitions $\alpha,\beta$ such that $\lambda, \mu$ are strict expansions of $\delta_1$ respectively. Equivalently, this means that $ N^\lambda_{\gamma_1, \alpha} \cdot N^\lambda_{\gamma_2, \alpha} \neq 0$. Since $\mu$ is a subdiagram of $\lambda$ then any such $\beta \subseteq \mu$ is also a subdiagram of $\lambda$.Using Lemma \ref{lem_best_int} we can infer that a maximal expansion to reach $\mu$ is when $\gamma = \mu = \lambda\cap\mu$ and consequently $\beta = \varnothing$.
 
     $$
-     k = |\gamma_1|+|\gamma_2| \leq |\mu| = \operatorname{min} \{|\lambda|,|\mu|\}
-    $$
+    \implies |\lambda \cap \mu| = |\gamma_1| \leq
+     |\gamma_1| + |\gamma_2| \: \: \textnormal{ For any } \gamma_2 \textnormal{ subdiagram of } \lambda \cap \mu.$$
 
     $$
-    \implies k \leq  \operatorname{min} \{|\lambda|,|\mu|\}
+    \implies |\gamma_1| + |\gamma_2| = |\lambda \cap \mu| + |\gamma_2| \leq
+      \operatorname*{max}_{\gamma_2}|\gamma_1| + |\gamma_2| = K_{max}\: \: $$
     $$
-
-    Furtherermore given that $|\gamma_1|+|\gamma_2| = |\lambda|-|\lambda'|$ and $|\gamma_1|+|\gamma_2| = |\mu|-|\mu'|$. The fact that (1) guarantees existance of maximum means that this is precisely when $k = |\lambda|-|\lambda'| = |\mu|-|\mu'|$ is maximal. This is when $\mu' = \emptyset$ and $|\lambda|-|\lambda'| = |\mu|$.
-    
-    $\implies |\gamma_1|+|\gamma_2| \leq k_{max} = |\mu| = \operatorname{min} \{|\lambda|,|\mu|\}$
-
-    $$ \implies k_{max}  = \operatorname{min} \{|\lambda|,|\mu|\}$$ 
+    \iff |\lambda \cap \mu| + |\gamma_2| \leq K_{max}
+    $$
+    Then both inequalities guarantee $|\lambda \cap \mu| + |\gamma_2| = K_{max}$.
 \end{proof}
 
+\begin{definition}
+    Let $\gamma_1, \gamma_2$ be subpartitions of both $\lambda$ and $\mu$. Then we say that $(\gamma_1, \gamma_2)$  is subordinate to $(\lambda, \mu)$ if both $\lambda$ and $\mu$ contain some strict  $\gamma_2$-expansion of $\gamma_1$.
+\end{definition}
 
+\begin{proposition}
+    For partitions $\lambda, \mu$, the maximum non-zero socle layer is 
+    $$
+    K = \operatorname*{max}_{\gamma_1, \gamma_2} |\gamma_1| + |\gamma_2| 
+    $$
+    over all  $(\gamma_1, \gamma_2)$ subordinate pairs to $(\lambda, \mu)$.
+\end{proposition}
+\begin{proof}
+    Let $k$ be the last non-zero socle layer that is: $\: \overline{\operatorname{soc}}^k I^{\lambda, \mu} \neq 0$. That is, there exists $\lambda', \mu'$ subpartitions of $\lambda, \mu$ respectively such that $N^\lambda_{\gamma_1, \gamma_2, \lambda'} \cdot N^\lambda_{\gamma_1, \gamma_2, \mu'} \neq 0$ For some $\gamma_1, \gamma_2$ subdiagrams of both $\lambda, \mu$. Equivalently, $N^\lambda_{\gamma_1, \gamma_2, \lambda'} \neq 0$ and $N^\lambda_{\gamma_1, \gamma_2, \mu'} \neq 0$. These coefficients are 
+
+    $$
+    N^{\lambda}_{\gamma_1, \gamma_2, \lambda'} = \sum_{\nu} N^{\nu}_{\gamma_1,\gamma_2} N^{\lambda}_{\nu, \lambda'}
+    $$
+
+    $$
+    N^{\mu}_{\gamma_1, \gamma_2, \mu'} = \sum_{\nu'} N^{\nu'}_{\gamma_1,\gamma_2} N^{\mu}_{\nu', \mu'}.
+    $$
+    Note that since both are non-zero the coefficients $N^{\nu'}_{\gamma_1,\gamma_2}$ and $N^{\nu}_{\gamma_1,\gamma_2}$ are non-zero for some $\nu,\nu'$. This is equivalent as saying that both $\nu,\nu'$ are a strict $\gamma_2$-expansion of $\gamma_1$. and additionally $\nu \subseteq \lambda$ (since $N^{\lambda}_{\nu, \lambda'} \neq 0$) and similarly $\nu' \subseteq \mu$. 
+    Then $(\gamma_1, \gamma_2)$ are subordinate to  $(\lambda, \mu)$.
+\end{proof}
+
+\subsection{The One-Row Case}
+
+\begin{theorem}[One-row formula]
+Let $\lambda=(a)$, where $a\geq 0$, and let $\mu$
+be an arbitrary partition. Then
+\begin{equation}
+\boxed{
+k_{\max}((a),\mu)
+=
+\min\{a,\mu_1+\mu_2\}.
+}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Suppose that $k$ is a nonzero layer. Then there
+exist partitions $\nu\subseteq(a)$ and
+$\omega\subseteq\mu$, both of size $k$, and
+partitions $\delta,\gamma$ such that
+\[
+N_{\delta,\gamma}^{\nu}>0,
+\qquad
+N_{\delta,\gamma}^{\omega}>0.
+\]
+
+Since $\nu$ is a single-row partition, the containment
+properties of Littlewood--Richardson coefficients
+imply that $\delta$ and $\gamma$ must also be
+single-row partitions. Write
+\[
+\delta=(d),\qquad \gamma=(g),
+\qquad d+g=k.
+\]
+
+By Pieri's rule,
+\[
+s_{(d)}s_{(g)}
+=
+\sum_{j=0}^{\min(d,g)}
+s_{(d+g-j,j)}.
+\]
+Thus every constituent of $s_\delta s_\gamma$
+has at most two rows. In particular,
+$\ell(\omega)\leq 2$, and since $\omega\subseteq\mu$,
+\[
+k=|\omega|\leq\mu_1+\mu_2.
+\]
+Moreover, $\nu\subseteq(a)$ implies $k\leq a$.
+Consequently,
+\[
+k_{\max}((a),\mu)
+\leq \min\{a,\mu_1+\mu_2\}.
+\]
+
+To establish the reverse inequality, set
+\[
+k=\min\{a,\mu_1+\mu_2\}.
+\]
+Choose a two-row subpartition
+$\omega=(u,v)\subseteq\mu$ with $u+v=k$.
+Such a partition exists by removing boxes from
+the first two rows of $\mu$.
+
+Take
+\[
+\delta=(u),\qquad \gamma=(v).
+\]
+Pieri's rule shows that both $(k)$ and $(u,v)$
+occur in the product $s_\delta s_\gamma$.
+Hence
+\[
+N_{\delta,\gamma}^{(k)}>0,
+\qquad
+N_{\delta,\gamma}^{\omega}>0.
+\]
+Since $(k)\subseteq(a)$ and $\omega\subseteq\mu$,
+the degree $k$ is attained.
+
+Therefore,
+\[
+k_{\max}((a),\mu)
+=
+\min\{a,\mu_1+\mu_2\}.
+\]
+\end{proof}
+
+\begin{corollary}[One-column formula]
+For $\lambda=(1^a)$ and arbitrary $\mu$,
+\[
+\boxed{
+k_{\max}((1^a),\mu)
+=
+\min\{a,\mu_1^{\mathsf T}+\mu_2^{\mathsf T}\}.
+}
+\]
+\end{corollary}
+
+\begin{proof}
+This follows from the one-row theorem and the
+conjugation identity
+\[
+N_{\delta,\gamma}^{\nu}
+=
+N_{\delta^{\mathsf T},\gamma^{\mathsf T}}
+ ^{\nu^{\mathsf T}},
+\]
+which implies
+\[
+k_{\max}(\lambda,\mu)
+=
+k_{\max}(\lambda^{\mathsf T},\mu^{\mathsf T}).
+\]
+\end{proof}
 
 \end{document}
 

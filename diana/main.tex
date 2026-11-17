@@ -1,0 +1,354 @@
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=0.87in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\DeclareMathOperator{\soc}{soc}
+\newcommand{\Sp}{\mathfrak{sp}_{\infty}}
+\newcommand{\Gam}[1]{\Gamma_{\langle #1\rangle}}
+\newcommand{\toplayer}[1]{\mathcal{L}_{\mathrm{top}}(#1)}
+\newcommand{\dom}{\unrhd}
+
+\title{Results on Diana Thesis}
+\author{Research proposal and preliminary mathematical results}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We revisit Proposition 3.5 of Diana-Maria Harambas's bachelor's thesis,
+\emph{On the structure of injective tensor $\mathfrak{sp}_{\infty}$-,
+$\mathfrak{so}_{\infty}$-modules and of injective resolutions of simple tensor
+$\mathfrak{sp}_{\infty}$-, $\mathfrak{so}_{\infty}$-modules} \cite{Harambas}.
+The thesis uses lexicographic order to describe constituents in the last
+nonzero socle layer of an indecomposable injective tensor module.
+We distinguish that order from dominance order, exhibit a counterexample
+to the lexicographically formulated claim, and identify a gap in its
+constructive proof, including an example where that construction fails even
+though the desired constituent does occur. We then give a complete
+Kostka-number description of the top layer, with an exact support
+criterion and some immediate corollaries. Finally, we outline research
+questions and the literature checks needed to assess novelty.
+\end{abstract}
+
+\section{Background and statement under review}
+
+Let $\lambda=(\lambda_1,\lambda_2,\ldots)$ be a partition, padded with
+zeros, and let $\Gamma_\lambda$ be the indecomposable injective tensor
+$\Sp$-module indexed by $\lambda$. We denote simple constituents by
+$\Gam{\mu}$ and write $c^\lambda_{\alpha,\mu}$ for ordinary
+Littlewood--Richardson coefficients. We use $\soc_j$ for the
+$j$-th \emph{successive socle layer}, not the cumulative socle submodule.
+
+Diana's Proposition 3.4 establishes that the last nonzero layer is at
+index $e(\lambda)+1$, where
+\begin{equation}\label{eq:even}
+ e(\lambda)=\lambda_2+\lambda_4+\lambda_6+\cdots.
+\end{equation}
+The unique maximal subpartition of $\lambda$ of the form
+$(2\gamma)^\mathsf{T}$ is
+\begin{equation}\label{eq:eta}
+ \eta_{\max}=(\lambda_2,\lambda_2,\lambda_4,\lambda_4,\ldots),
+ \qquad |\eta_{\max}|=2e(\lambda).
+\end{equation}
+Consequently, the multiplicity of $\Gam{\mu}$ in this final layer equals
+\begin{equation}\label{eq:toplr}
+ [\toplayer{\lambda}:\Gam{\mu}]
+ =c^\lambda_{\eta_{\max},\mu}.
+\end{equation}
+
+Define $d=d(\lambda)$ to be the partition obtained by sorting the
+\emph{positive} numbers
+\begin{equation}\label{eq:d}
+ \lambda_1-\lambda_2,\quad \lambda_3-\lambda_4,\quad
+ \lambda_5-\lambda_6,\quad\ldots
+\end{equation}
+into nonincreasing order. Proposition 3.5 of \cite{Harambas} asserts,
+in its written form, that every $\mu$ with $|\mu|=|d|$,
+$\ell(\mu)\leq\ell(d)$, and $\mu\geq_{\mathrm{lex}}d$
+occurs in the top layer.
+
+\subsection{Two distinct orders}
+For distinct partitions, $\mu>_{\mathrm{lex}}d$ means that the first
+coordinate at which they differ is larger for $\mu$. In contrast,
+$\mu$ \emph{dominates} $d$, written $\mu\dom d$, if $|\mu|=|d|$ and
+\begin{equation}\label{eq:dom}
+ \sum_{i=1}^{j}\mu_i\geq\sum_{i=1}^{j}d_i
+ \qquad\text{for every }j\geq1.
+\end{equation}
+Dominance implies lexicographic comparison, but not conversely.
+Definition 2.2 of the thesis explicitly defines the first-differing-entry
+(lexicographic) order, whereas its cited web reference concerns
+dominance order. This is an ambiguity about terminology and citation;
+it does not establish the author's intended interpretation.
+
+\section{Audit of Proposition 3.5 and its proof}
+
+\begin{example}[Counterexample to the lexicographic statement]
+Take
+\begin{equation}\label{eq:counter}
+ \lambda=(9,5,5,1,1),\quad
+ \eta_{\max}=(5,5,1,1),\quad d=(4,4,1),\quad
+ \mu=(5,2,2).
+\end{equation}
+Then $|\mu|=|d|=9$, $\ell(\mu)=\ell(d)=3$, and
+$\mu>_{\mathrm{lex}}d$ because $5>4$ in the first coordinate.
+However,
+\[
+ \mu_1+\mu_2=7<8=d_1+d_2,
+\]
+so $\mu\not\dom d$. The Kostka positivity criterion, together with
+Theorem~\ref{thm:kostka} below, implies
+\[
+ c^{(9,5,5,1,1)}_{(5,5,1,1),(5,2,2)}
+ =K_{(5,2,2),(4,4,1)}=0.
+\]
+Thus the constituent predicted by the lexicographically stated
+Proposition 3.5 is absent.
+\end{example}
+
+\subsection{Where the tableau construction breaks}
+The proof of Proposition 3.5 proposes the following procedure: place
+the largest unused entry $x$ in the rightmost empty box of the lowest
+incomplete row; place $x-1$ in the next incomplete row above; continue
+upwards to $1$; repeat, then sort entries within each row.
+
+For the shape in \eqref{eq:counter}, the skew diagram
+$\lambda/\eta_{\max}$ has three nonempty rows of lengths $4,4,1$
+from top to bottom. A tableau of weight $(5,2,2)$ would use five $1$'s,
+two $2$'s, and two $3$'s. The first iteration of the prescribed algorithm
+places $3$ in the bottom row, $2$ in the middle row, and $1$ in the top
+row. In the second iteration, the remaining $3$ must start in the middle
+row and $2$ must go in the top row, leaving no row above in which to
+place the required $1$. The algorithm therefore cannot be carried out
+as written.
+
+\begin{example}[The construction fails even under dominance]
+Take
+\[
+ \lambda=(4,2,2,1,1),\quad
+ \eta_{\max}=(2,2,1,1),\quad
+ d=(2,1,1),\quad \mu=(2,2).
+\]
+Here $\mu\dom d$. The three nonempty skew rows, from top to bottom,
+have lengths $2,1,1$ and lie in pairwise disjoint columns.
+A valid Littlewood--Richardson tableau is obtained by filling these
+rows, respectively, with
+\[
+ \begin{array}{c|c}
+ \text{top skew row} & 1\;1\\
+ \text{middle skew row} & 2\\
+ \text{bottom skew row} & 2
+ \end{array}
+\]
+whose reading word is $1,1,2,2$. In particular,
+\[
+ c^{(4,2,2,1,1)}_{(2,2,1,1),(2,2)}=1.
+\]
+But the stated procedure first puts $2$ in the bottom row and $1$
+in the middle row, filling both. Its next iteration attempts to put
+the remaining $2$ in the top row and then the remaining $1$ above
+that row, which is impossible. Hence replacing ``lexicographic'' by
+``dominance'' repairs the \emph{statement}, but not this specific
+constructive argument.
+\end{example}
+
+\begin{remark}
+These examples establish a failure of the proposed procedure \emph{as
+written}; they do not rule out a modified greedy construction.
+They also do not determine whether dominance order was intended by
+the original author. Example 3.6 in the thesis satisfies both ordering
+conditions and therefore does not distinguish them.
+\end{remark}
+
+\section{An exact Kostka-number refinement}
+
+Let $h_a$ denote the complete homogeneous symmetric function and
+$K_{\mu,d}$ the Kostka number indexed by shape $\mu$ and weight $d$.
+
+\begin{theorem}[Complete top-layer decomposition]\label{thm:kostka}
+For every partition $\lambda$, let $e(\lambda)$ and $d=d(\lambda)$
+be defined by \eqref{eq:even} and \eqref{eq:d}. Then
+\begin{equation}\label{eq:main}
+ \boxed{\displaystyle
+ \toplayer{\lambda}
+ \cong\bigoplus_{\mu\vdash |d|}K_{\mu,d}\,\Gam{\mu}.}
+\end{equation}
+In particular,
+\begin{equation}\label{eq:support}
+ \boxed{\displaystyle
+ [\toplayer{\lambda}:\Gam{\mu}]>0
+ \quad\Longleftrightarrow\quad \mu\dom d.}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By \eqref{eq:toplr}, the multiplicity in question is
+$c^\lambda_{\eta_{\max},\mu}$. The skew diagram
+$\lambda/\eta_{\max}$ has boxes only in odd-numbered rows.
+Its row $2j-1$ has length
+$\lambda_{2j-1}-\lambda_{2j}$. Moreover, the occupied columns
+of different nonempty rows are disjoint: row $2j-1$ begins strictly
+after column $\lambda_{2j}$, while every lower odd row ends no later
+than column $\lambda_{2j}$. Thus the skew diagram is a disjoint
+union of horizontal rows. The skew-Schur factorization gives
+\[
+ s_{\lambda/\eta_{\max}}
+ =\prod_{j\geq1}s_{(\lambda_{2j-1}-\lambda_{2j})}
+ =\prod_{j\geq1}h_{\lambda_{2j-1}-\lambda_{2j}}
+ =h_{d_1}\cdots h_{d_{\ell(d)}}.
+\]
+On the one hand, the skew-Schur expansion is
+\[
+ s_{\lambda/\eta_{\max}}
+ =\sum_{\mu}c^\lambda_{\eta_{\max},\mu}s_\mu.
+\]
+On the other hand, Young's rule (the complete-homogeneous-to-Schur
+expansion) states that
+\[
+ h_{d_1}\cdots h_{d_{\ell(d)}}
+ =\sum_{\mu\vdash |d|}K_{\mu,d}s_\mu.
+\]
+Comparison of coefficients proves
+$c^\lambda_{\eta_{\max},\mu}=K_{\mu,d}$ and hence
+\eqref{eq:main}. Finally, the Kostka positivity criterion asserts
+$K_{\mu,d}>0$ exactly when $\mu\dom d$, proving
+\eqref{eq:support}; see \cite{Macdonald,Fulton}.
+\end{proof}
+
+\subsection{Consequences}
+
+\begin{corollary}[Simple final layer]\label{cor:simple}
+The final nonzero socle layer is simple if and only if
+$\ell(d)\leq1$. The empty partition is included in this convention.
+\end{corollary}
+\begin{proof}
+For $\ell(d)\leq1$, $h_d$ is a single Schur function. If
+$\ell(d)\geq2$, both $s_{(|d|)}$ and $s_d$ occur in $h_d$, and they
+index different simple constituents.
+\end{proof}
+
+\begin{corollary}[Multiplicity-free final layer]\label{cor:mf}
+The final nonzero socle layer is multiplicity-free if and only if
+\[
+ \boxed{\ell(d)\leq2.}
+\]
+\end{corollary}
+\begin{proof}
+For two positive parts $d=(a,b)$, Pieri's rule yields
+\[
+ h_ah_b=\sum_{j=0}^{\min(a,b)}s_{(a+b-j,j)},
+\]
+with all coefficients equal to one. The cases of zero or one part
+are immediate. Conversely, let $m=\ell(d)\geq3$ and $n=|d|$.
+The weight-$d$ semistandard tableaux of shape $(n-1,1)$ are
+obtained by choosing the entry in the second row among the
+$m-1$ distinct labels $2,\ldots,m$. Thus
+\[
+ K_{(n-1,1),d}=m-1\geq2,
+\]
+so the final layer is not multiplicity-free.
+\end{proof}
+
+\begin{corollary}[Two distinguished constituents]
+If $d$ is nonempty, the simple constituents indexed by $(|d|)$
+and by $d$ both occur with multiplicity one.
+\end{corollary}
+\begin{proof}
+The standard Kostka identities give
+$K_{(|d|),d}=K_{d,d}=1$.
+\end{proof}
+
+\section{Proposed continuation}
+
+The theorem above is a specialization of established identities in
+symmetric-function theory. We therefore \emph{do not claim novelty}
+for Young's rule or Kostka positivity. The next stage of the project
+is to determine which consequences for infinite-rank tensor modules
+are already explicit in the literature, and where new structural
+results may be obtained.
+
+\begin{enumerate}[label=\textbf{Aim \arabic*.},leftmargin=*]
+\item \textbf{Literature and proof audit.}
+Compare the exact top-layer formula with \cite{Harambas} and earlier
+papers on tensor representations of $\Sp$ and $\mathfrak{so}_\infty$.
+Formulate the correction of the order terminology precisely and check
+whether Proposition 3.5 has been subsequently revised.
+
+\item \textbf{Refined top-layer invariants.}
+Find direct formulas or useful bounds for the number of distinct
+simple constituents
+$\#\{\mu\vdash |d|:\mu\dom d\}$,
+for the largest multiplicity $\max_\mu K_{\mu,d}$, and for
+multiplicity patterns in special families of partitions.
+
+\item \textbf{Generalized multiplicity classifications.}
+Extend Corollary~\ref{cor:mf} by classifying families for which all
+top-layer multiplicities are at most a prescribed bound, or for which
+certain multiplicities are extremal.
+
+\item \textbf{Orthogonal analogue.}
+Use the established equivalence between the symplectic and
+orthogonal infinite-rank tensor categories to transfer the exact
+description, with correct transposition of all partition labels.
+
+\item \textbf{Further layers and unimodality.}
+Investigate whether the symmetric-function approach gives
+inequalities or combinatorial injections for the total multiplicities
+in successive socle layers, in connection with the diamond-shaped
+pattern discussed in Chapter 6 of \cite{Harambas}.
+\end{enumerate}
+
+\section{Verification and research status}
+
+\begin{center}
+\begin{tabular}{p{0.62\linewidth}p{0.25\linewidth}}
+\toprule
+Claim & Status\\
+\midrule
+Lexicographically stated Proposition 3.5 & Disproved by Example 2.1\\
+Original greedy algorithm always succeeds & Disproved as written\\
+Dominance support criterion & Proven via Kostka positivity\\
+Exact top-layer multiplicity formula & Proven using Young's rule\\
+Simple and multiplicity-free classifications & Proven as corollaries\\
+Originality relative to all existing literature & To be established\\
+Further combinatorial and homological extensions & Proposed research\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{9}
+\bibitem{Harambas}
+D.-M. Harambas,
+\emph{On the structure of injective tensor $\mathfrak{sp}_{\infty}$-,
+$\mathfrak{so}_{\infty}$-modules and of injective resolutions of simple
+tensor $\mathfrak{sp}_{\infty}$-, $\mathfrak{so}_{\infty}$-modules},
+Bachelor's thesis, Constructor University, 2025.
+
+\bibitem{Macdonald}
+I. G. Macdonald,
+\emph{Symmetric Functions and Hall Polynomials},
+2nd ed., Oxford University Press, 1995.
+
+\bibitem{Fulton}
+W. Fulton,
+\emph{Young Tableaux: With Applications to Representation Theory and Geometry},
+Cambridge University Press, 1997.
+\end{thebibliography}
+
+\end{document}
